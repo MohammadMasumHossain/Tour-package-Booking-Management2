@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import { NavLink } from "react-router";
 import userIcon from "../../assets/profile.png";
+import logo from "../../assets/pack&go.png"
 import { AuthContext } from "../../contexts/AuthContext/AuthContext";
 
 const Navbar = () => {
@@ -100,7 +101,10 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <div className="flex justify-center space-x-2 items-center">
+          <img src={logo} alt="" className="w-12 rounded-2xl" />
+          <p className="text-2xl font-bold">Pack&Go</p>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
