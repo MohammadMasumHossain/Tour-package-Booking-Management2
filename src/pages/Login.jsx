@@ -1,6 +1,7 @@
 import React, { use } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../contexts/AuthContext/AuthContext';
+import SocialLogin from './Shared/SocialLogin';
 
 const Login = () => {
     const {login}=use(AuthContext);
@@ -43,6 +44,11 @@ const Login = () => {
                <p className='text-center font-semibold pt-5'>Don't have an Account? <Link className="text-red-500" to="/register">Register</Link></p>
               </fieldset>
             </form>
+           
+                <div className='flex justify-center'>
+                    <SocialLogin></SocialLogin>
+                </div>
+            
        </div>
         </div>
     );

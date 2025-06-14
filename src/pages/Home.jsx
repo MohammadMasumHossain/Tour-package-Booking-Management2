@@ -1,9 +1,16 @@
 import React from 'react';
+import Banner from '../components/Banner';
+import FeaturedPackages from '../components/FeaturedPackages';
+import TopDestinations from '../components/TopDestinations';
 
 const Home = () => {
+   
     return (
         <div>
-            <p>this is home</p>
+            <Banner></Banner>
+            <FeaturedPackages  ></FeaturedPackages>
+            <TopDestinations></TopDestinations>
+           
         </div>
     );
 };
