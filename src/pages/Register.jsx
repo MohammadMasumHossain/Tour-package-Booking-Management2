@@ -1,5 +1,5 @@
 import Lottie from 'lottie-react';
-import React, { use } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router';
 import registerlottie from '../assets/lotties/registeranimation.json'
 import { AuthContext } from '../contexts/AuthContext/AuthContext';
@@ -7,7 +7,7 @@ import SocialLogin from './Shared/SocialLogin';
 
 const Register = () => {
 
-    const {createUser}=use(AuthContext)
+    const {createUser}=useContext(AuthContext)
 
     const handleregister =e=>{
         e.preventDefault();
@@ -18,7 +18,7 @@ const Register = () => {
         const photo=form.photo.value;
        console.log(name,email,password,photo);
        //create user
-           createUser(email,password)
+           createUser(email,password,name,photo)
            .then(res=>{
             console.log(res.user)
            })
