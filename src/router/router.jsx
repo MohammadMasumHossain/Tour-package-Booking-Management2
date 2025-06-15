@@ -33,6 +33,7 @@ const router = createBrowserRouter([
         },
         {
           path:'/allpackages',
+          loader:()=>fetch('http://localhost:3000/tours'),
           Component:AllPackages
         },
         {
