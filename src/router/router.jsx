@@ -13,6 +13,9 @@ import MyBooking from "../pages/MyBooking";
 import AddPackage from "../pages/AddPackage";
 import Managemypackages from "../pages/Managemypackages";
 
+import PackagesDetails from "../pages/PackagesDetails";
+import Error from "../components/Error";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +25,11 @@ const router = createBrowserRouter([
             index:true,
             loader:()=>fetch('http://localhost:3000/tours'),
             Component:Home
+        },
+        {
+           path:'/tours/:id',
+           Component:PackagesDetails,
+           loader :({params})=> fetch(`http://localhost:3000/tours/${params.id}`)
         },
         {
             path:'/register',
@@ -36,6 +44,7 @@ const router = createBrowserRouter([
           loader:()=>fetch('http://localhost:3000/tours'),
           Component:AllPackages
         },
+        
         {
           path:'/aboutus',
           Component:AboutUs
@@ -51,6 +60,10 @@ const router = createBrowserRouter([
         {
           path:'/managemypackages',
           Component:Managemypackages
+        },
+        {
+           path:'*',
+           Component:Error
         }
     ]
   },

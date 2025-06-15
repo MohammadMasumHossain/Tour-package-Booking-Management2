@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Feature = ({ tour }) => {
   return (
@@ -29,9 +30,11 @@ const Feature = ({ tour }) => {
         </p>
         <p className="text-gray-800 font-bold mt-2">${tour.price}</p>
 
+       <Link to ={`/tours/${tour._id}`}>
         <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
           View Details
         </button>
+       </Link>
       </div>
     </div>
   );

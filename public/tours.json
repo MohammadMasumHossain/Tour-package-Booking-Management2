@@ -1,6 +1,6 @@
 [
   {
-    "_id": "1",
+    
     "tour_name": "Dhaka to Cox’s Bazar ",
     "image": "https://i.ibb.co/1fcPwwQM/coxsbazar.jpg",
     "duration": "3 Days, 2 Nights",
@@ -17,7 +17,7 @@
     "created_at": "2025-06-14T10:00:00Z"
   },
   {
-    "_id": "2",
+    
     "tour_name": "Dhaka to Bandarban Adventure",
     "image": "https://i.ibb.co/hFJCjG4N/bandarban.jpg",
     "duration": "4 Days, 3 Nights",
@@ -34,7 +34,7 @@
     "created_at": "2025-06-14T10:00:00Z"
   },
   {
-    "_id": "3",
+    
     "tour_name": "Sundarbans Wildlife Expedition",
     "image": "https://i.ibb.co/vCxZF1M4/sundarbans.jpg",
     "duration": "3 Days, 2 Nights",
@@ -51,7 +51,7 @@
     "created_at": "2025-06-14T10:00:00Z"
   },
   {
-    "_id": "4",
+   
     "tour_name": "Dhaka to Sylhet Tea Gardens",
     "image": "https://i.ibb.co/zWmzfYSB/sylhet.jpg",
     "duration": "2 Days, 1 Night",
@@ -68,7 +68,7 @@
     "created_at": "2025-06-14T10:00:00Z"
   },
   {
-    "_id": "5",
+   
     "tour_name": "River Cruise from Dhaka",
     "image": "https://i.ibb.co/xKTDP2M3/river.jpg",
     "duration": "1 Day",
@@ -85,7 +85,7 @@
     "created_at": "2025-06-14T10:00:00Z"
   },
   {
-    "_id": "6",
+    
     "tour_name": "Chittagong Hill Tracts Trek",
     "image": "https://i.ibb.co/Q73sSs8H/hill.jpg",
     "duration": "5 Days, 4 Nights",
