@@ -17,6 +17,7 @@ import PackagesDetails from "../pages/PackagesDetails";
 import Error from "../components/Error";
 import BookNow from "../components/BookNow";
 import Updated from "../pages/Updated";
+import PrivateRoute from "../route/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
         },
         {
            path:'/tours/:id',
-           Component:PackagesDetails,
+           element:<PrivateRoute><PackagesDetails></PackagesDetails></PrivateRoute>,
            loader :({params})=> fetch(`http://localhost:3000/tours/${params.id}`)
         },
         {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
         {
           path:'/allpackages',
           loader:()=>fetch('http://localhost:3000/tours'),
-          Component:AllPackages
+          element:<AllPackages></AllPackages>
         },
         
         {
@@ -53,15 +54,16 @@ const router = createBrowserRouter([
         },
         {
           path:'/mybooking',
-          Component:MyBooking
+          
+          element:<PrivateRoute><MyBooking></MyBooking></PrivateRoute>
         },
         {
           path:'/addpackage',
-          Component:AddPackage
+          element:<PrivateRoute><AddPackage></AddPackage></PrivateRoute>
         },
         {
           path:'/managemypackages',
-          Component:Managemypackages
+          element:<PrivateRoute><Managemypackages></Managemypackages></PrivateRoute>
         },
         {
           path:'/booknow',

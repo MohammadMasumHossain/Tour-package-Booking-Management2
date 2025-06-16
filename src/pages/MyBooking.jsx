@@ -2,108 +2,109 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../contexts/AuthContext/AuthContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { Link } from 'react-router';
 
 const MyBooking = () => {
   const { user } = useContext(AuthContext);
-  const [tours, setTours] = useState([]);
-
-  // Fetch all tours by guide email
-  const fetchTours = () => {
-    if (user?.email) {
-      axios
-        .get(`http://localhost:3000/tours?email=${user.email}`)
-        .then((res) => setTours(res.data))
-        .catch((err) => console.error('Error fetching tours:', err));
-    }
-  };
+  const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    fetchTours();
+    if (user?.email) {
+      axios
+        .get(`http://localhost:3000/Book?email=${user.email}`)
+        .then(res => setBookings(res.data))
+        .catch(err => console.error('Error fetching bookings:', err));
+    }
   }, [user]);
 
-  const handleDelete = (id) => {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: 'This will permanently delete the tour.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Yes, delete it!',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axios
-          .delete(`http://localhost:3000/tours/${id}`)
-          .then((res) => {
-            if (res.data.deletedCount > 0) {
-              Swal.fire('Deleted!', 'The tour has been deleted.', 'success');
-              fetchTours(); // Refresh data
-            }
-          })
-          .catch((err) => {
-            console.error('Delete error:', err);
-            Swal.fire('Error!', 'Failed to delete the tour.', 'error');
+  const handleConfirm = (_e, _id) => {
+    axios
+      .patch(`http://localhost:3000/Book/${_id}`, { status: 'completed' })
+      .then(res => {
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Booking Confirmed!',
+            showConfirmButton: false,
+            timer: 1500,
           });
-      }
-    });
+
+          // Update the status in the state without refetching
+          setBookings(prev =>
+            prev.map(booking =>
+              booking._id === _id ? { ...booking, status: 'completed' } : booking
+            )
+          );
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Failed to confirm booking',
+          text: 'Please try again later.',
+        });
+      });
   };
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold text-center my-4">My Added Packages</h2>
-
+      <h2 className="text-2xl font-bold text-center mb-6">My Bookings</h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           <thead className="bg-base-200 text-base-content">
             <tr>
               <th>#</th>
-              <th>Image</th>
               <th>Tour Name</th>
-              <th>Destination</th>
-              <th>Price (Tk)</th>
-              <th>Duration</th>
-              <th>Departure</th>
               <th>Guide Name</th>
-              <th>Guide Email</th>
               <th>Guide Contact</th>
-              <th>Actions</th>
+              <th>Departure Date</th>
+              <th>Departure Location</th>
+              <th>Destination</th>
+              <th>Special Note</th>
+              <th>Status</th>
+              <th>Confirm</th>
             </tr>
           </thead>
           <tbody>
-            {tours.map((tour, index) => (
-              <tr key={tour._id}>
+            {bookings.map((booking, index) => (
+              <tr key={booking._id}>
                 <td>{index + 1}</td>
+                <td>{booking.tour_name}</td>
+                <td>{booking.guide_name}</td>
+                <td>{booking.guide_contact || booking.guide_contact_no}</td>
+                <td>{booking.departure_date}</td>
+                <td>{booking.departure_location}</td>
+                <td>{booking.destination}</td>
+                <td>{booking.notes || 'N/A'}</td>
                 <td>
-                  <img
-                    src={tour.image}
-                    alt="Tour"
-                    className="w-16 h-12 rounded object-cover"
-                  />
-                </td>
-                <td>{tour.tour_name}</td>
-                <td>{tour.destination}</td>
-                <td>{tour.price}</td>
-                <td>{tour.duration}</td>
-                <td>{tour.departure_date}</td>
-                <td>{tour.guide_name}</td>
-                <td>{tour.guide_email}</td>
-                <td>{tour.guide_contact_no}</td>
-                <td>
-                  <Link to={`/update/${tour._id}`} ><button className="btn btn-sm btn-info mr-2">Update</button></Link>
-                  <button
-                    onClick={() => handleDelete(tour._id)}
-                    className="btn btn-sm btn-error"
+                  <span
+                    className={`badge ${
+                      booking.status === 'completed'
+                        ? 'badge-success'
+                        : 'badge-warning'
+                    }`}
                   >
-                    Delete
-                  </button>
+                    {booking.status || 'pending'}
+                  </span>
+                </td>
+                <td>
+                  {booking.status !== 'completed' ? (
+                    <button
+                      className="btn btn-sm btn-success"
+                      onClick={(e) => handleConfirm(e, booking._id)}
+                    >
+                      Confirm
+                    </button>
+                  ) : (
+                    <span className="text-green-600 font-semibold">Done</span>
+                  )}
                 </td>
               </tr>
             ))}
-            {tours.length === 0 && (
+            {bookings.length === 0 && (
               <tr>
-                <td colSpan="11" className="text-center py-4">
-                  No tours found for this guide.
+                <td colSpan="10" className="text-center py-4">
+                  No bookings found.
                 </td>
               </tr>
             )}

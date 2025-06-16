@@ -1,10 +1,14 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../contexts/AuthContext/AuthContext';
 import SocialLogin from './Shared/SocialLogin';
 
 const Login = () => {
-    const {login}=use(AuthContext);
+    const {login,loading}=use(AuthContext);
+     const navigate=useNavigate();
+     const location =useLocation();
+     
+     const from = location.state || '/';
     
     const handleLogin=e=>{
         e.preventDefault();
@@ -18,6 +22,7 @@ const Login = () => {
         login(email,password)
         .then(res=>{
             console.log(res.user)
+            navigate(from || '/')
         })
         .catch(error=>{
             console.log(error)
@@ -46,7 +51,7 @@ const Login = () => {
             </form>
            
                 <div className='flex justify-center'>
-                    <SocialLogin></SocialLogin>
+                    <SocialLogin from={from}></SocialLogin>
                 </div>
             
        </div>

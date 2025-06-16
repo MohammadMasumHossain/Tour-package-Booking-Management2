@@ -30,7 +30,7 @@ const Banner = () => {
           Whether you crave adventure, relaxation, or inspiration—our curated
           packages deliver magic to your doorstep.
         </p>
-        <Link to="/all-packages">
+        <Link to="/allpackages">
           <button className="bg-blue-600 text-white mt-8 px-6 py-3 rounded-lg hover:bg-blue-700 transition">
             Explore All Packages
           </button>

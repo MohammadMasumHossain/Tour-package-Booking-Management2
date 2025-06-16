@@ -60,8 +60,7 @@ const BookNow = () => {
     >
       <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-400 mb-6">Book Tour</h2>
 
-      {/* Hidden Tour ID */}
-      <input type="hidden" name="_id" value={tour?._id} />
+   
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>

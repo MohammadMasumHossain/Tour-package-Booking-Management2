@@ -4,12 +4,14 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import { auth } from '../../firebase/firebase.init';
 
 
+
 const googleProvider =new GoogleAuthProvider();
 
 const AuthProvider = ({children}) => {
 
     const [loading,setLoading]=useState(true);
     const[user,setUser]=useState(null)
+   
 
     // 
     const createUser = (email, password, name, photo) => {
@@ -47,7 +49,9 @@ const AuthProvider = ({children}) => {
 
     const singInWithGoogle =()=>{
       setLoading(true);
+      
       return signInWithPopup(auth,googleProvider)
+      
     }
 
     const singOutUser =()=>{
