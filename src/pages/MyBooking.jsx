@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../contexts/AuthContext/AuthContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router';
 
 const MyBooking = () => {
   const { user } = useContext(AuthContext);
@@ -89,7 +90,7 @@ const MyBooking = () => {
                 <td>{tour.guide_email}</td>
                 <td>{tour.guide_contact_no}</td>
                 <td>
-                  <button className="btn btn-sm btn-info mr-2">Update</button>
+                  <Link to={`/update/${tour._id}`} ><button className="btn btn-sm btn-info mr-2">Update</button></Link>
                   <button
                     onClick={() => handleDelete(tour._id)}
                     className="btn btn-sm btn-error"

@@ -16,6 +16,7 @@ import Managemypackages from "../pages/Managemypackages";
 import PackagesDetails from "../pages/PackagesDetails";
 import Error from "../components/Error";
 import BookNow from "../components/BookNow";
+import Updated from "../pages/Updated";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,13 @@ const router = createBrowserRouter([
           Component:BookNow
           
         },
+        {
+        path:"/update/:id",
+         loader: async ({ params }) => {
+        return fetch(`http://localhost:3000/tours/${params.id}`);
+        },
+        element:<Updated></Updated>
+      },
         {
            path:'*',
            Component:Error
