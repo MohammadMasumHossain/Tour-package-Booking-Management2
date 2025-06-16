@@ -15,6 +15,7 @@ import Managemypackages from "../pages/Managemypackages";
 
 import PackagesDetails from "../pages/PackagesDetails";
 import Error from "../components/Error";
+import BookNow from "../components/BookNow";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,12 @@ const router = createBrowserRouter([
         {
           path:'/managemypackages',
           Component:Managemypackages
+        },
+        {
+          path:'/booknow',
+           
+          Component:BookNow
+          
         },
         {
            path:'*',

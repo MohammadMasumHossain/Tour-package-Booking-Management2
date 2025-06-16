@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router'; // make sure you're using `react-router-dom`
+import { Link, useLoaderData } from 'react-router'; // make sure you're using `react-router-dom`
 
 const PackagesDetails = () => {
   const tour = useLoaderData();
@@ -27,7 +27,7 @@ const PackagesDetails = () => {
         />
         <div>
           <p className="text-lg font-semibold text-gray-800">{tour.guide_name}</p>
-          <p className="text-gray-600 text-sm">📞 {tour.guide_contact}</p>
+          <p className="text-gray-600 text-sm">📞 {tour.guide_contact_no}</p>
         </div>
       </div>
 
@@ -35,10 +35,11 @@ const PackagesDetails = () => {
       <div className="grid md:grid-cols-2 gap-4 text-gray-700 mb-6">
         <p><span className="font-semibold">Duration:</span> {tour.duration}</p>
         <p><span className="font-semibold">Price:</span> ${tour.price}</p>
-        <p><span className="font-semibold">Booking Count:</span> {tour.booking_count}</p>
+        <p><span className="font-semibold">Booking Count:</span> {tour.bookingCount}</p>
         <p>
-          <span className="font-semibold">Departure:</span> {tour.departure_location} on {tour.departure_date}
+          <span className="font-semibold">Departure:</span> {tour.departure_location}  
         </p>
+        <p><span className="font-semibold">DepartureDate: </span>{tour.departure_date}</p>
         <p><span className="font-semibold">Destination:</span> {tour.destination}</p>
       </div>
 
@@ -49,9 +50,12 @@ const PackagesDetails = () => {
       </div>
 
       {/* Book Now Button */}
+      <Link to="/booknow"
+        state={{ tour }} >
       <button className="w-full bg-blue-600 text-white py-3 rounded-md text-lg hover:bg-blue-700 transition">
         Book Now
       </button>
+      </Link>
     </div>
   );
 };
