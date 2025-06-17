@@ -18,7 +18,7 @@ const AddPackage = () => {
     packages.bookingCount = 0;
     packages.created_at = new Date();
 
-    axios.post('http://localhost:3000/tours', packages)
+    axios.post('http://localhost:3000/tours', packages,)
       .then(res => {
         toast.success("Package added successfully!");
         console.log(res);

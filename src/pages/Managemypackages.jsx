@@ -12,7 +12,11 @@ const Managemypackages = () => {
   const fetchTours = () => {
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/tours?email=${user.email}`)
+        .get(`http://localhost:3000/tours?email=${user.email}`,{
+          headers:{
+            Authorization: `Bearer ${user.accessToken}`
+          }
+        })
         .then((res) => setTours(res.data))
         .catch((err) => console.error('Error fetching tours:', err));
     }
