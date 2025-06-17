@@ -99,17 +99,17 @@ const UpdatePackage = () => {
 
           <div>
             <label className="label"><span className="label-text font-semibold">Guide Email</span></label>
-            <input name="guide_email" defaultValue={user?.email || tourData.guide_email} readOnly className="input input-bordered w-full bg-gray-100" />
+            <input name="guide_email" defaultValue={user?.email || tourData.guide_email} readOnly className="input input-bordered w-full " />
           </div>
 
           <div>
             <label className="label"><span className="label-text font-semibold">Guide Name</span></label>
-            <input name="guide_name" defaultValue={user?.displayName || tourData.guide_name} readOnly className="input input-bordered w-full bg-gray-100" />
+            <input name="guide_name" defaultValue={user?.displayName || tourData.guide_name} readOnly className="input input-bordered w-full " />
           </div>
 
           <div>
             <label className="label"><span className="label-text font-semibold">Guide Photo URL</span></label>
-            <input name="guide_photo" defaultValue={user?.photoURL || tourData.guide_photo} readOnly className="input input-bordered w-full bg-gray-100" />
+            <input name="guide_photo" defaultValue={user?.photoURL || tourData.guide_photo} readOnly className="input input-bordered w-full " />
           </div>
 
           <div className="text-center pt-4">

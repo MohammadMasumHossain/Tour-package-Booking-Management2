@@ -16,14 +16,62 @@ const BookNow = () => {
     setBookingDate(now);
   }, []);
 
-  const handleBook = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-    data.status = 'pending';
+  // const handleBook = (e) => {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const formData = new FormData(form);
+  //   const data = Object.fromEntries(formData.entries());
+  //   data.status = 'pending';
 
-    axios.post('http://localhost:3000/Book', data)
+  //   axios.post('http://localhost:3000/Book', data)
+  //   .then(res => {
+  //     if (res.data.insertedId) {
+  //       Swal.fire({
+  //         position: "top-end",
+  //         icon: "success",
+  //         title: "Your tour has been successfully booked!",
+  //         showConfirmButton: false,
+  //         timer: 1500
+  //       });
+  //       form.reset();
+  //     } else {
+  //       // Optional: catch case when no error but booking failed
+  //       Swal.fire({
+  //         icon: "warning",
+  //         title: "Booking Failed",
+  //         text: "Something went wrong. Please try again.",
+  //       });
+  //     }
+
+
+
+  //     //
+
+      
+  //   })
+  //   .catch(error => {
+  //     console.error(error);
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "Booking Failed",
+  //       text: error.response?.data?.message || "An unexpected error occurred. Please try again later.",
+  //     });
+  //   });
+  // };
+
+  const handleBook = (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+
+  // Add tour_id from tour._id (important for backend to update bookingCount)
+  data.tour_id = tour?._id;
+
+  // Add booking status or anything else you want
+  data.status = 'pending';
+
+  axios.post('http://localhost:3000/Book', data)
     .then(res => {
       if (res.data.insertedId) {
         Swal.fire({
@@ -35,7 +83,6 @@ const BookNow = () => {
         });
         form.reset();
       } else {
-        // Optional: catch case when no error but booking failed
         Swal.fire({
           icon: "warning",
           title: "Booking Failed",
@@ -51,7 +98,8 @@ const BookNow = () => {
         text: error.response?.data?.message || "An unexpected error occurred. Please try again later.",
       });
     });
-  };
+};
+
 
   return (
     <form

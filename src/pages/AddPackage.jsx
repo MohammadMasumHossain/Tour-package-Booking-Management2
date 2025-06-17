@@ -150,7 +150,7 @@ const AddPackage = () => {
               type="email"
               value={user?.email || ''}
               readOnly
-              className="input input-bordered w-full bg-gray-100"
+              className="input input-bordered w-full "
             />
           </div>
 
@@ -161,7 +161,7 @@ const AddPackage = () => {
               type="text"
               value={user?.displayName || ''}
               readOnly
-              className="input input-bordered w-full bg-gray-100"
+              className="input input-bordered w-full "
             />
           </div>
 
@@ -172,7 +172,7 @@ const AddPackage = () => {
               type="text"
               value={user?.photoURL || ''}
               readOnly
-              className="input input-bordered w-full bg-gray-100"
+              className="input input-bordered w-full "
             />
           </div>
 
