@@ -7,27 +7,38 @@ import 'react-toastify/dist/ReactToastify.css';
 const AddPackage = () => {
   const { user } = useContext(AuthContext);
 
-  const handleAddPackage = (e) => {
+  const handleAddPackage = async (e) => {
     e.preventDefault();
 
     const form = e.target;
     const formData = new FormData(form);
     const packages = Object.fromEntries(formData.entries());
 
-    // Add default fields not from form
+    // Add default fields
     packages.bookingCount = 0;
     packages.created_at = new Date();
 
-    axios.post('http://localhost:3000/tours', packages,)
-      .then(res => {
-        toast.success("Package added successfully!");
-        console.log(res);
-        form.reset();
-      })
-      .catch(error => {
-        toast.error('❌ Something went wrong!');
-        console.log(error);
-      });
+    try {
+      // Get Firebase JWT token
+      const token = await user.getIdToken();
+
+      const res = await axios.post(
+        'http://localhost:3000/tours',
+        packages,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      toast.success("Package added successfully!");
+      form.reset();
+      console.log(res.data);
+    } catch (error) {
+      console.error(error);
+      toast.error('❌ Something went wrong!');
+    }
   };
 
   return (
@@ -131,7 +142,7 @@ const AddPackage = () => {
             ></textarea>
           </div>
 
-          {/* Guide Contact Info */}
+          {/* Guide Info */}
           <div>
             <label className="label"><span className="label-text font-semibold">Guide Contact No.</span></label>
             <input
@@ -150,7 +161,7 @@ const AddPackage = () => {
               type="email"
               value={user?.email || ''}
               readOnly
-              className="input input-bordered w-full "
+              className="input input-bordered w-full"
             />
           </div>
 
@@ -161,7 +172,7 @@ const AddPackage = () => {
               type="text"
               value={user?.displayName || ''}
               readOnly
-              className="input input-bordered w-full "
+              className="input input-bordered w-full"
             />
           </div>
 
@@ -172,7 +183,7 @@ const AddPackage = () => {
               type="text"
               value={user?.photoURL || ''}
               readOnly
-              className="input input-bordered w-full "
+              className="input input-bordered w-full"
             />
           </div>
 
