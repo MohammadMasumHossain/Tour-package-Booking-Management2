@@ -23,7 +23,7 @@ const AddPackage = () => {
       const token = await user.getIdToken();
 
       const res = await axios.post(
-        'http://localhost:3000/tours',
+        'https://tour-package-server.vercel.app/tours',
         packages,
         {
           headers: {

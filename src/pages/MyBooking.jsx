@@ -11,7 +11,7 @@
 //   useEffect(() => {
 //     if (user?.email) {
 //       axios
-//         .get(`http://localhost:3000/Book?email=${user.email}`,{
+//         .get(`https://tour-package-server.vercel.app/Book?email=${user.email}`,{
 //           headers:{
 //             Authorization: `Bearer ${user.accessToken}`
 //           }
@@ -23,7 +23,7 @@
 
 //   const handleConfirm = (_e, _id) => {
 //     axios
-//       .patch(`http://localhost:3000/Book/${_id}`, { status: 'completed' })
+//       .patch(`https://tour-package-server.vercel.app/Book/${_id}`, { status: 'completed' })
 //       .then(res => {
 //         console.log(res)
 //         if (res.data.modifiedCount > 0) {
@@ -140,7 +140,7 @@ const MyBooking = () => {
         try {
           const token = await getIdToken(user);
           const res = await axios.get(
-            `http://localhost:3000/Book?email=${user.email}`,
+            `https://tour-package-server.vercel.app/Book?email=${user.email}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -161,7 +161,7 @@ const MyBooking = () => {
     try {
       const token = await getIdToken(user);
       const res = await axios.patch(
-        `http://localhost:3000/Book/${_id}`,
+        `https://tour-package-server.vercel.app/Book/${_id}`,
         { status: 'completed' },
         {
           headers: {

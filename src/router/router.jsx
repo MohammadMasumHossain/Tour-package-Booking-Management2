@@ -26,13 +26,13 @@ const router = createBrowserRouter([
     children:[
         {
             index:true,
-            loader:()=>fetch('http://localhost:3000/tours'),
+            loader:()=>fetch('https://tour-package-server.vercel.app/tours'),
             Component:Home
         },
         {
            path:'/tours/:id',
            element:<PrivateRoute><PackagesDetails></PackagesDetails></PrivateRoute>,
-           loader :({params})=> fetch(`http://localhost:3000/tours/${params.id}`)
+           loader :({params})=> fetch(`https://tour-package-server.vercel.app/tours/${params.id}`)
         },
         {
             path:'/register',
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         },
         {
           path:'/allpackages',
-          loader:()=>fetch('http://localhost:3000/tours'),
+          loader:()=>fetch('https://tour-package-server.vercel.app/tours'),
           element:<AllPackages></AllPackages>
         },
         
@@ -74,7 +74,7 @@ const router = createBrowserRouter([
         {
         path:"/update/:id",
          loader: async ({ params }) => {
-        return fetch(`http://localhost:3000/tours/${params.id}`);
+        return fetch(`https://tour-package-server.vercel.app/tours/${params.id}`);
         },
         element:<Updated></Updated>
       },

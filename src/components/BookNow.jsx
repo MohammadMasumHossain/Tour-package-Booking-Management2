@@ -23,7 +23,7 @@ const BookNow = () => {
   //   const data = Object.fromEntries(formData.entries());
   //   data.status = 'pending';
 
-  //   axios.post('http://localhost:3000/Book', data)
+  //   axios.post('https://tour-package-server.vercel.app/Book', data)
   //   .then(res => {
   //     if (res.data.insertedId) {
   //       Swal.fire({
@@ -71,7 +71,7 @@ const BookNow = () => {
   // Add booking status or anything else you want
   data.status = 'pending';
 
-  axios.post('http://localhost:3000/Book', data)
+  axios.post('https://tour-package-server.vercel.app/Book', data)
     .then(res => {
       if (res.data.insertedId) {
         Swal.fire({

@@ -12,7 +12,7 @@ const Managemypackages = () => {
   const fetchTours = () => {
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/tours?email=${user.email}`,{
+        .get(`https://tour-package-server.vercel.app/tours?email=${user.email}`,{
           headers:{
             Authorization: `Bearer ${user.accessToken}`
           }
@@ -38,7 +38,7 @@ const Managemypackages = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/tours/${id}`)
+          .delete(`https://tour-package-server.vercel.app/tours/${id}`)
           .then((res) => {
             if (res.data.deletedCount > 0) {
               Swal.fire('Deleted!', 'The tour has been deleted.', 'success');

@@ -13,7 +13,7 @@ const UpdatePackage = () => {
 
   // Fetch existing tour data
   useEffect(() => {
-    axios.get(`http://localhost:3000/tours/${id}`)
+    axios.get(`https://tour-package-server.vercel.app/tours/${id}`)
       .then(res => setTourData(res.data))
       .catch(err => toast.error("Failed to load package"));
   }, [id]);
@@ -24,7 +24,7 @@ const UpdatePackage = () => {
     const formData = new FormData(form);
     const updatedData = Object.fromEntries(formData.entries());
 
-    axios.put(`http://localhost:3000/tours/${id}`, updatedData)
+    axios.put(`https://tour-package-server.vercel.app/tours/${id}`, updatedData)
       .then(res => {
         toast.success("Package updated successfully!");
          // or redirect to /packages
