@@ -11,7 +11,7 @@ const Feature = ({ tour }) => {
       />
 
       <div className="p-4">
-        <h3 className="text-xl font-semibold mb-2">{tour.tour_name}</h3>
+        <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{tour.tour_name}</h3>
 
         <div className="flex items-center gap-2 mb-2">
           <img
