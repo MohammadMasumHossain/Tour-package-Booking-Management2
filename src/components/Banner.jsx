@@ -6,7 +6,7 @@ import bannerImg from "../assets/tour.jpg";
 const Banner = () => {
   return (
     <div
-      className="bg-cover bg-center mt-6  py-24 px-6 text-white text-center"
+      className="bg-cover bg-center mt-6  py-24  text-white text-center"
       style={{
         backgroundImage: `url(${bannerImg})`,
       }}

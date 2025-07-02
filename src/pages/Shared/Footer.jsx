@@ -65,12 +65,11 @@ import logo from "../../assets/pack&go.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-10 px-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+  <footer className="bg-gray-900 text-white py-10">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
         
         {/* Logo + Address */}
-        <div>
-         
+        <div className="flex flex-col items-center md:items-start">
           <p className="text-sm leading-6">
             <strong className="text-lg">Pack&Go</strong><br />
             Bashundhara Residential Area, Dhaka<br />
@@ -80,7 +79,7 @@ const Footer = () => {
         </div>
 
         {/* Legal Links */}
-        <div>
+        <div className="flex flex-col items-center md:items-start">
           <h3 className="text-lg font-semibold mb-3">Legal</h3>
           <ul className="text-sm space-y-2">
             <li>
@@ -93,31 +92,26 @@ const Footer = () => {
         </div>
 
         {/* Social Icons + Copyright */}
-        <div>
-          <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
-          <div className="flex justify-between items-center text-sm text-gray-400">
-            
-            {/* Social Icons */}
-            <div className="flex space-x-4 text-xl text-white">
-              <a href="https://www.facebook.com/hm.rana.161" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-blue-500">
-                <FaFacebook />
-              </a>
-              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-blue-400">
-                <FaTwitter />
-              </a>
-              <a href="https://www.linkedin.com/in/mohammad-masum-hossain" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-pink-500">
-                <FaInstagram />
-              </a>
-            </div>
-
-            {/* Copyright */}
-            <span className="ml-8 whitespace-nowrap text-xs md:text-sm text-gray-400">
-             &copy; {new Date().getFullYear()} Pack&Go. All rights reserved.
-            </span>
+        <div className="flex flex-col items-center md:items-start space-y-4">
+          <h3 className="text-lg font-semibold">Follow Us</h3>
+          <div className="flex space-x-4 text-xl text-white">
+            <a href="https://www.facebook.com/hm.rana.161" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-blue-500">
+              <FaFacebook />
+            </a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-blue-400">
+              <FaTwitter />
+            </a>
+            <a href="https://www.linkedin.com/in/mohammad-masum-hossain" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-pink-500">
+              <FaInstagram />
+            </a>
           </div>
+          <span className="text-xs md:text-sm text-gray-400 text-center">
+            &copy; {new Date().getFullYear()} Pack&Go. All rights reserved.
+          </span>
         </div>
       </div>
     </footer>
+
   );
 };
 
