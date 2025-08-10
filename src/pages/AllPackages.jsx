@@ -45,7 +45,7 @@ const AllPackages = () => {
           />
           <button 
             onClick={handleSearchClick} 
-            className="btn btn-primary rounded-l-none"
+            className="btn btn-secondary rounded-l-none"
           >
             Search
           </button>
@@ -61,6 +61,13 @@ const AllPackages = () => {
           <option value="asc">Lowest Price</option>
           <option value="desc">Highest Price</option>
         </select>
+
+         <button 
+            onClick={handleSearchClick} 
+            className="btn btn-secondary rounded-l-none"
+          >
+            Search
+          </button>
       </div>
 
       {/* Card Grid */}
