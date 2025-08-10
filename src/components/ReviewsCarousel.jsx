@@ -89,7 +89,7 @@ const ReviewsCarousel = () => {
         }
       `}</style>
 
-      <div className="overflow-hidden border-t border-b border-gray-300 py-6 bg-gray-50">
+      <div className="overflow-hidden border-t border-b border-gray-300 py-6 bg-white">
         <div className="scrolling-wrapper">
           {reviews.map(({id, name, photo, rating, comment}) => (
             <Review
