@@ -5,8 +5,8 @@ import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
 
 const WhyChooseUs = () => {
   return (
-       <section className="max-w-4xl mx-auto px-4 py-10">
-      <div className="text-center mb-10">
+       <section className="max-w-7xl mx-auto px-4 py-10">
+      <div className="text-center mb-6">
         <h2 className="text-4xl font-extrabold text-black">Frequently Asked Questions</h2>
         <p className="text-gray-500 mt-2">Answers to your most common queries</p>
       </div>
