@@ -45,11 +45,26 @@ const Navbar = () => {
         </NavLink>
       </li>
       {user && (
+        <>
         <li>
           <NavLink to="/mybooking" className={({ isActive }) => (isActive ? "text-green-600" : "")}>
             My Bookings
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/addpackage" className={({ isActive }) => (isActive ? "text-green-600" : "")}>
+            Add Package
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/managemypackages" className={({ isActive }) => (isActive ? "text-green-600" : "")}>
+            Manage My Packages
+          </NavLink>
+        </li>
+        </>
+
+        
       )}
     </>
   );
