@@ -75,7 +75,7 @@ const ReviewsCarousel = () => {
       <style>{`
         .scrolling-wrapper {
           display: flex;
-          animation: scroll-left 20s linear infinite;
+          animation: scroll-left 60s linear infinite;
           white-space: nowrap;
           will-change: transform;
         }
