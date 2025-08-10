@@ -5,7 +5,7 @@ import { FaUserTie, FaClock, FaDollarSign, FaCalendarAlt } from 'react-icons/fa'
 const AllPackages = () => {
   const tours = useLoaderData();
   const [search, setSearch] = useState('');
-  const [sortOrder, setSortOrder] = useState(null); // 'asc', 'desc', or null
+  const [sortOrder, setSortOrder] = useState(''); // '' | 'asc' | 'desc'
 
   // Filter packages by search term
   const filteredPackages = tours.filter(pkg =>
@@ -34,26 +34,17 @@ const AllPackages = () => {
         />
       </div>
 
-      {/* Sort Buttons */}
-      <div className="flex justify-center gap-4 mb-10">
-        <button
-          onClick={() => setSortOrder('asc')}
-          className={`btn ${sortOrder === 'asc' ? 'btn-primary' : 'btn-outline'}`}
+      {/* Sort Dropdown */}
+      <div className="mb-10 text-center">
+        <select
+          className="select select-bordered max-w-xs"
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
         >
-          Sort Price ↑
-        </button>
-        <button
-          onClick={() => setSortOrder('desc')}
-          className={`btn ${sortOrder === 'desc' ? 'btn-primary' : 'btn-outline'}`}
-        >
-          Sort Price ↓
-        </button>
-        <button
-          onClick={() => setSortOrder(null)}
-          className={`btn ${sortOrder === null ? 'btn-primary' : 'btn-outline'}`}
-        >
-          Clear Sort
-        </button>
+          <option value="">Sort by Price</option>
+          <option value="asc">Lowest Price</option>
+          <option value="desc">Highest Price</option>
+        </select>
       </div>
 
       {/* Card Grid */}

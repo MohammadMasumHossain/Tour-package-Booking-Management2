@@ -21,6 +21,7 @@ import PrivateRoute from "../route/PrivateRoute";
 import TermsandCondition from "../components/TermsandCondition";
 import Privacy from "../components/Privacy";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -87,7 +88,7 @@ const router = createBrowserRouter([
       },
       {
           Path:'/privacypage',
-          element:<Privacy></Privacy>
+          Component:Privacy
         },
         {
            path:'*',
