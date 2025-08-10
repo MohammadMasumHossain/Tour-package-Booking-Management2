@@ -5,11 +5,14 @@ import { FaUserTie, FaClock, FaDollarSign, FaCalendarAlt } from 'react-icons/fa'
 const AllPackages = () => {
   const tours = useLoaderData();
   const [search, setSearch] = useState('');
-  const [sortOrder, setSortOrder] = useState(''); // '' | 'asc' | 'desc'
+  const [sortOrder, setSortOrder] = useState('');
 
-  // Filter packages by search term
+  // We only filter when user clicks the Search button
+  const [filteredSearch, setFilteredSearch] = useState('');
+
+  // Filter packages by filteredSearch term
   const filteredPackages = tours.filter(pkg =>
-    pkg.tour_name.toLowerCase().includes(search.toLowerCase())
+    pkg.tour_name.toLowerCase().includes(filteredSearch.toLowerCase())
   );
 
   // Sort filtered packages by price depending on sortOrder
@@ -19,23 +22,36 @@ const AllPackages = () => {
     return 0;
   });
 
+  // When Search button is clicked, set filteredSearch state
+  const handleSearchClick = () => {
+    setFilteredSearch(search);
+  };
+
   return (
     <div className="px-4 py-12 max-w-6xl mx-auto">
       <h2 className="text-4xl font-extrabold text-center text-secondary mb-6">🌴 All Travel Packages</h2>
 
-      {/* Search Input */}
-      <div className="mb-6 text-center max-w-md mx-auto">
-        <input
-          type="text"
-          placeholder="Search by tour name..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="input input-bordered w-full"
-        />
-      </div>
+      {/* Search and Sort Controls on same line */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 max-w-3xl mx-auto">
+        
+        {/* Search input + button */}
+        <div className="flex w-full sm:w-auto">
+          <input
+            type="text"
+            placeholder="Search by tour name..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="input input-bordered rounded-r-none w-full"
+          />
+          <button 
+            onClick={handleSearchClick} 
+            className="btn btn-primary rounded-l-none"
+          >
+            Search
+          </button>
+        </div>
 
-      {/* Sort Dropdown */}
-      <div className="mb-10 text-center">
+        {/* Sort dropdown */}
         <select
           className="select select-bordered max-w-xs"
           value={sortOrder}
