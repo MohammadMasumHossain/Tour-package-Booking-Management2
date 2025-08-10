@@ -71,10 +71,7 @@ const router = createBrowserRouter([
           path:'/terms',
           element:<TermsandCondition></TermsandCondition>
         },
-        {
-          Path:'/privacy',
-          element:<Privacy></Privacy>
-        },
+        
         {
           path:'/booknow',
            
@@ -88,6 +85,10 @@ const router = createBrowserRouter([
         },
         element:<Updated></Updated>
       },
+      {
+          Path:'/privacypage',
+          element:<Privacy></Privacy>
+        },
         {
            path:'*',
            Component:Error

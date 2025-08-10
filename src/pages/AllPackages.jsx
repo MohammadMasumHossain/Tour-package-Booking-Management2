@@ -3,33 +3,63 @@ import { useLoaderData, Link } from 'react-router';
 import { FaUserTie, FaClock, FaDollarSign, FaCalendarAlt } from 'react-icons/fa';
 
 const AllPackages = () => {
-  const tours = useLoaderData(); // tours is your loaded array from the loader
+  const tours = useLoaderData();
   const [search, setSearch] = useState('');
+  const [sortOrder, setSortOrder] = useState(null); // 'asc', 'desc', or null
 
-  // ✅ Filter based on search input
+  // Filter packages by search term
   const filteredPackages = tours.filter(pkg =>
     pkg.tour_name.toLowerCase().includes(search.toLowerCase())
   );
+
+  // Sort filtered packages by price depending on sortOrder
+  const sortedPackages = [...filteredPackages].sort((a, b) => {
+    if (sortOrder === 'asc') return a.price - b.price;
+    if (sortOrder === 'desc') return b.price - a.price;
+    return 0;
+  });
 
   return (
     <div className="px-4 py-12 max-w-6xl mx-auto">
       <h2 className="text-4xl font-extrabold text-center text-secondary mb-6">🌴 All Travel Packages</h2>
 
       {/* Search Input */}
-      <div className="mb-10 text-center">
+      <div className="mb-6 text-center max-w-md mx-auto">
         <input
           type="text"
           placeholder="Search by tour name..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="input input-bordered w-full max-w-md"
+          className="input input-bordered w-full"
         />
+      </div>
+
+      {/* Sort Buttons */}
+      <div className="flex justify-center gap-4 mb-10">
+        <button
+          onClick={() => setSortOrder('asc')}
+          className={`btn ${sortOrder === 'asc' ? 'btn-primary' : 'btn-outline'}`}
+        >
+          Sort Price ↑
+        </button>
+        <button
+          onClick={() => setSortOrder('desc')}
+          className={`btn ${sortOrder === 'desc' ? 'btn-primary' : 'btn-outline'}`}
+        >
+          Sort Price ↓
+        </button>
+        <button
+          onClick={() => setSortOrder(null)}
+          className={`btn ${sortOrder === null ? 'btn-primary' : 'btn-outline'}`}
+        >
+          Clear Sort
+        </button>
       </div>
 
       {/* Card Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredPackages.length ? (
-          filteredPackages.map((tour) => (
+        {sortedPackages.length ? (
+          sortedPackages.map((tour) => (
             <div
               key={tour._id}
               className="bg-white/60 backdrop-blur-md rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
