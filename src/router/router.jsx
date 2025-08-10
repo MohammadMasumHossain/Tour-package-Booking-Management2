@@ -19,7 +19,8 @@ import BookNow from "../components/BookNow";
 import Updated from "../pages/Updated";
 import PrivateRoute from "../route/PrivateRoute";
 import TermsandCondition from "../components/TermsandCondition";
-import Privacy from "../components/Privacy";
+import PrivacyPage from "../components/PrivacyPage";
+
 
 
 const router = createBrowserRouter([
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
           element:<PrivateRoute><Managemypackages></Managemypackages></PrivateRoute>
         },
         {
+          path:'/page',
+          element:<PrivacyPage></PrivacyPage>
+        },
+        {
           path:'/terms',
           element:<TermsandCondition></TermsandCondition>
         },
@@ -86,10 +91,7 @@ const router = createBrowserRouter([
         },
         element:<Updated></Updated>
       },
-      {
-          Path:'/privacypage',
-          Component:Privacy
-        },
+      
         {
            path:'*',
            Component:Error
